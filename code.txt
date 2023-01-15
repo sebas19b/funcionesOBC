@@ -1,0 +1,87 @@
+//funciones
+
+const persona = {name: 'sebastian', last: 'barreto'}
+
+saludarPersona(persona)
+
+function saludarPersona(objeto){
+	console.log(`Hola ${objeto.name} ${objeto.last}`)
+}
+//Uso de arrow funcion
+const array = [1, 2, 3, 4]
+
+const array2 = array.map(valor => valor * 2)
+
+console.log(array2)
+
+//otra forma de uso
+
+const dbValor = valor => valor * 2
+
+const array3 = array.map(dbValor)
+
+console.log(`Array 3: ${array3}`)
+
+// carga y sobre carga de funciones
+
+function saludar(){
+	hola()
+}
+
+function hola(){
+	console.log('Funcion hola()')
+}
+
+saludar()
+
+/*
+Carga de funciones
+1 global()
+2 saludar() global()
+3 hola() saludar() global()
+4 saludar() global()
+5 global()
+*/
+  /*
+  function resurso(){
+      recurso()
+  }
+  recurso()
+  */
+
+//Funciones asincronas
+
+function promesa(){
+	//Hace una llamada a una BD externa
+  	//Puede darnos algun error
+}
+
+const promesa = new Promise ((resolve, reject) => {
+	const i = Math.floor(Math.random() * 2)
+    
+    if(i !== 0){
+      resolve()
+    }else{ 
+      reject()
+    }
+})
+
+promesa
+	.then(() => console.log('Correcto'))
+	.catch(() => console.log('ERROR'))
+	.finally(() => console.log('Siempre'))
+
+// Funcion generadora
+
+function* generadorId(){
+	let id = 0
+     while(true){
+      id++
+      if(id === 10){
+        return id
+      }
+    	yield id // Espera hacer llamado
+    }
+}
+const gen = generadorId()
+console.log(gen.next())
